@@ -6,7 +6,7 @@
 
 ## 🧾 Descrição do Desafio
 
-Este projeto faz parte da formação **"Explorando a AWS com CloudFormation"** da [DIO](https://www.dio.me/).  
+**"Explorando a AWS com CloudFormation"** da [DIO](https://www.dio.me/).  
 O objetivo foi praticar **Infraestrutura como Código (IaC)**, criando e organizando templates CloudFormation que automatizam recursos de forma modular.
 
 ---
