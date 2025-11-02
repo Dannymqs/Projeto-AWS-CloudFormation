@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Instalação e configuração do servidor Apache
+
+Resources:
+  ApacheInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0
+      KeyName: my-key
+      SecurityGroups:
+        - !Ref ApacheSecurityGroup
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          yum update -y
+          yum install -y httpd
+          systemctl start httpd
+          systemctl enable httpd
+          echo "<h1>Servidor Apache Implantado via CloudFormation</h1>" > /var/www/html/index.html
+      Tags:
+        - Key: Name
+          Value: ApacheServer
+
+Outputs:
+  ApacheURL:
+    Value: !Sub "http://${ApacheInstance.PublicDnsName}"
